@@ -10,7 +10,7 @@ const FilterByTabs = () => {
   })
   // Filters
   return (
-    <ul class='list-filter'>
+    <ul>
       <li>
         <a
           onClick={() => setFilterBy(null)}
@@ -18,7 +18,7 @@ const FilterByTabs = () => {
           class={`${filterBy() === null ? 'current-filter' : 'filter'} `}
         >
           <i class='fas fa-frown-open mr-3 '></i>
-          <span class='pb-1 md:pb-0 text-sm'>All</span>
+          <span>All</span>
         </a>
       </li>
       <li>
@@ -28,7 +28,7 @@ const FilterByTabs = () => {
           class={`${filterBy() ? 'current-filter' : 'filter'} `}
         >
           <i class='fas fa-grin-beam-sweat mr-3 '></i>
-          <span class='pb-1 md:pb-0 text-sm'>Completed</span>
+          <span>Completed</span>
         </a>
       </li>
       <li>
@@ -38,7 +38,7 @@ const FilterByTabs = () => {
           class={`${filterBy() === false ? 'current-filter' : 'filter'} `}
         >
           <i class='fa fa-grin-tongue-squint mr-3'></i>
-          <span class='pb-1 md:pb-0 text-sm'>Pending</span>
+          <span>Pending</span>
         </a>
       </li>
     </ul>

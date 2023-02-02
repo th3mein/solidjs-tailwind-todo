@@ -19,11 +19,8 @@ const AddTodoForm = () => {
 
   return (
     <form onSubmit={addTodo} class='mb-4'>
-      <label class='absolute left-[-999px]' for='addTodo'>
-        Add Todo
-      </label>
+      <label for='addTodo'>Add Todo</label>
       <input
-        class='new-todo'
         type='text'
         id='addTodo'
         autofocus

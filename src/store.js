@@ -19,4 +19,8 @@ export default createStore({
     },
   ],
   filterBy: false,
+  one: {
+    abc: 'cba',
+    def: 'fed',
+  },
 })

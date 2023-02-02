@@ -16,14 +16,19 @@
     @apply block w-[480px] mx-auto my-10 bg-gray-900 border border-gray-800 p-8 rounded-lg;
   }
 
-  .todo-item {
-    @apply flex items-center mb-2 pb-2 border-b-2 border-gray-800;
+  /* main */
+  .main form label {
+    @apply absolute left-[-999px];
   }
-  .list-filter {
-    @apply flex flex-1 items-center mb-10;
+  .main form input {
+    @apply bg-gray-800 text-gray-400 caret-pink-500 placeholder:text-gray-500 border border-gray-900 rounded shadow focus:outline-none w-full p-2;
   }
 
-  .list-filter li {
+  /* filter tabs */
+  .main ul:nth-child(2) {
+    @apply flex flex-1 items-center mb-10;
+  }
+  .main ul:nth-child(2) li {
     @apply mr-6 my-2 md:my-0;
   }
   .filter {
@@ -33,7 +38,30 @@
     @apply text-blue-400 pr-2 hover:border-blue-400 border-blue-400 block py-1  pl-1 align-middle no-underline border-b-2;
   }
 
-  .new-todo {
-    @apply bg-gray-800 text-gray-400 caret-pink-500 placeholder:text-gray-500 border border-gray-900 rounded shadow focus:outline-none w-full p-2;
+  /* The list */
+  .main ul:nth-child(3) li {
+    @apply flex items-center mb-2 pb-2 border-b-2 border-gray-800;
+  }
+  .main ul:nth-child(3) li label {
+    @apply block flex-1 px-5;
+  }
+  /* Edit Form */
+  .edit-form h1 {
+    @apply block text-xl mb-6;
+  }
+  .edit-form label {
+    @apply text-gray-400 w-28;
+  }
+  .edit-form li {
+    @apply flex align-middle mb-4 last:mb-0 items-center;
+  }
+  .edit-form input[type='text'] {
+    @apply bg-gray-800 text-gray-400 caret-pink-500 placeholder:text-gray-500 border border-gray-900 rounded shadow focus:outline-none flex-1 p-2;
+  }
+  .edit-form button {
+    @apply block bg-green-800 text-gray-100 rounded-md align-middle flex-1 p-4 mt-4;
+  }
+  .edit-form a {
+    @apply block bg-gray-800 text-gray-100 rounded-md align-middle text-center flex-1 p-4;
   }
 }

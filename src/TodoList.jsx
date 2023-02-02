@@ -1,9 +1,10 @@
 import State from './store'
-
+import { useNavigate } from '@solidjs/router'
 // List of todos
 
 const TodoList = () => {
   const [state, setState] = State
+  const navigate = useNavigate()
 
   // Toggle todo status
   function handleToggleStatus(id) {
@@ -29,7 +30,7 @@ const TodoList = () => {
         fallback={<li>This list is empty!</li>}
       >
         {(todo, i) => (
-          <li class='todo-item'>
+          <li>
             <input
               class='peer'
               type='checkbox'
@@ -38,10 +39,11 @@ const TodoList = () => {
               name=''
               id={todo.id}
             />
-            <label class='block flex-1 px-5 peer-checked:line-through'>
-              {todo.task}
-            </label>
-            <button aria-label='Edit Todo'>
+            <label class='peer-checked:line-through'>{todo.task}</label>
+            <button
+              aria-label='Edit Todo'
+              onClick={() => navigate(`/todo/${todo.id}`)}
+            >
               <i class='far fa-edit  ml-2 text-blue-600'></i>
             </button>
             <button

@@ -1,14 +1,16 @@
-import { createSignal } from 'solid-js'
-import TodoList from './TodoList'
-import AddTodoForm from './AddTodoForm'
-import FilterByTabs from './FilterByTabs'
+import { lazy } from 'solid-js'
+import { Routes, Route } from '@solidjs/router'
+
+const Main = lazy(() => import('./Main'))
+const EditTodo = lazy(() => import('./EditTodo'))
 
 function App() {
   return (
     <div class='container'>
-      <AddTodoForm />
-      <FilterByTabs />
-      <TodoList />
+      <Routes>
+        <Route path='/' component={Main} />
+        <Route path='/todo/:id' component={EditTodo} />
+      </Routes>
     </div>
   )
 }
