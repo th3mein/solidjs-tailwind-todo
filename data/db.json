@@ -1,0 +1,29 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "task": "Cook soup",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "task": "Blow soup",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "task": "Eat soup1200",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "task": "Take your pills",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "task": "Do something",
+      "completed": false
+    }
+  ]
+}

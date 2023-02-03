@@ -1,5 +1,6 @@
 import { createSignal } from 'solid-js'
 import State from './store'
+import apiReq from './api'
 
 // Add Todo Form
 const AddTodoForm = () => {
@@ -7,7 +8,7 @@ const AddTodoForm = () => {
   const [newTodo, setNewTodo] = createSignal('')
 
   // Add todo
-  function addTodo(e) {
+  async function addTodo(e) {
     e.preventDefault()
     const id = state.todos.length
       ? state.todos[state.todos.length - 1].id + 1
@@ -15,6 +16,15 @@ const AddTodoForm = () => {
     const newItem = { id, task: newTodo(), completed: false }
     setState('todos', [...state.todos, newItem])
     setNewTodo('')
+
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newItem),
+    }
+    const result = await apiReq('', reqObj)
   }
 
   return (

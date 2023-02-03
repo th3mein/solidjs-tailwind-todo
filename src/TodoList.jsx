@@ -1,23 +1,40 @@
 import State from './store'
 import { useNavigate } from '@solidjs/router'
-// List of todos
+import apiReq from './api'
 
+// List of todos
 const TodoList = () => {
   const [state, setState] = State
   const navigate = useNavigate()
 
   // Toggle todo status
-  function handleToggleStatus(id) {
+  async function handleToggleStatus(id) {
     const updatedTodos = state.todos.map((todo) =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     )
     setState('todos', updatedTodos)
+
+    const thisTodo = updatedTodos.filter((todo) => todo.id === id)
+    // also update the database
+    const reqObj = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ completed: thisTodo[0].completed }),
+    }
+    const result = await apiReq(`/${id}`, reqObj)
   }
 
   // Delete todo
-  function deleteTodo(id) {
+  async function deleteTodo(id) {
     const updatedTodos = state.todos.filter((todo) => todo.id !== id)
     setState('todos', updatedTodos)
+    // also update the database
+    const reqObj = {
+      method: 'DELETE',
+    }
+    const result = await apiReq(`/${id}`, reqObj)
   }
   return (
     <ul>

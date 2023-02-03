@@ -1,7 +1,7 @@
 import State from './store'
 import { Show, createSignal, createEffect } from 'solid-js'
 import { unwrap } from 'solid-js/store'
-
+import apiReq from './api'
 import { useParams, useNavigate, A } from '@solidjs/router'
 const EditTodo = () => {
   const { id } = useParams()
@@ -12,12 +12,22 @@ const EditTodo = () => {
     unwrap(state.todos).filter((todo) => todo.id === Number(id))
   )
 
-  function saveChanges(e) {
+  async function saveChanges(e) {
     e.preventDefault()
     const updatedTodos = state.todos.map((todoItem) =>
       todoItem.id === Number(id) ? todo()[0] : todoItem
     )
     setState('todos', updatedTodos)
+    // also update the database
+    const reqObj = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(todo()[0]),
+    }
+    const result = await apiReq(`/${id}`, reqObj)
+    console.log(result)
   }
 
   return (
